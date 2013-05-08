@@ -5,7 +5,7 @@ A dependency injection autoloader inspired by Angular.
 
 Example:
 ````javascript
-module.exports = require('nodular')(require)(function(
+require('nodular')(require)(function(
   error
 , $express
 , $expressResource
@@ -13,5 +13,5 @@ module.exports = require('nodular')(require)(function(
 , middlewares
 ) {
 	// Your code here
-})
+});
 ```
