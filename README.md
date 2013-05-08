@@ -3,8 +3,24 @@ nodular
 
 A dependency injection autoloader inspired by Angular.
 
+Installation
+------
+
+```
+$ npm install nodular
+```
+
+Quick Start
+------
+
+Nodular is a dependency injection autoloader for Node. If you look at the example below you can see that it lacks the `require` method for each module loading instead nodular will take care of all requirements.
+
+When you enter an argument, then nodular automatically require that file or folder for you. If the folder does not contain an index file then it will instead return an object with all the files.
+
+If you are in the beginning of an argument name states "$", it will then be loaded from that projects "node_modules" folder.
+
 See example below:
-````javascript
+```javascript
 require('nodular')(require)(function(
   error
 , $express
