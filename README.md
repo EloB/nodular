@@ -17,7 +17,7 @@ Nodular is a dependency injection autoloader for Node. If you look at the exampl
 
 When you enter an argument, then nodular automatically require that file or folder for you. If the folder does not contain an index file then it will instead return an object with all the files.
 
-If you are in the beginning of an argument name states "$", it will then be loaded from that projects "node_modules" folder.
+If you are in the beginning of an argument name states `$`, it will then be loaded from that projects "node_modules" folder.
 
 See example below:
 ```javascript
@@ -62,3 +62,5 @@ A simple project and example
         - **passport-local/**
             - *(All files)*
     - app.js
+
+TODO: Write more on example
