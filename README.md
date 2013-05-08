@@ -19,6 +19,8 @@ When you enter an argument, then nodular automatically require that file or fold
 
 If you are in the beginning of an argument name states `$`, it will then be loaded from that projects "node_modules" folder.
 
+Because it's impossible to have dash in argument names you will have to use camelCase to emulate a dash in module, file or folder name.
+
 See example below:
 ```javascript
 require('nodular')(require)(function(
