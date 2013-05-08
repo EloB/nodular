@@ -20,7 +20,7 @@ require('nodular')(require)(function(
 });
 ```
 
-Alt-A simple project and example
+A simple project and example
 ------
 
 - **project_folder/**
