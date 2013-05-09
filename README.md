@@ -17,10 +17,11 @@ Nodular is a dependency injection autoloader for Node. If you look at the exampl
 
 When you enter an argument, then nodular automatically require that file or folder for you. If the folder does not contain an index file then it will instead return an object with all the files.
 
-If you are in the beginning of an argument name states `$`, it will then be loaded from that projects "node_modules" folder.
+If you are in the beginning of an argument name states `$`, it will then be loaded from that projects `node_modules` folder.
 
 Because it's impossible to have dash in argument names you will have to use camelCase to emulate a dash in module, file or folder name.
 
+*Javascript example:*
 ```javascript
 require('nodular')(require, function(
   error
@@ -31,10 +32,30 @@ require('nodular')(require, function(
 ) {
     var app = module.exports = $express();
     
+    console.log(config.redis); // Will output redis json object
+    
     app.use($express.static('public'));
     app.use(middlewares.passport());
     app.use(middlewares.rest());
 });
+```
+
+*Coffeescript example:*
+```coffeescript
+require('nodular') require, (
+  error
+  $express
+  $expressResource
+  config
+  middlewares
+) ->
+  app = module.exports = $express()
+  
+  console.log config.redis # Will output redis json object
+  
+  app.use $express.static 'public'
+  app.use middlewares.passport()
+  app.use middlewares.rest()
 ```
 
 A simple project and example
