@@ -22,7 +22,7 @@ If you are in the beginning of an argument name states `$`, it will then be load
 Because it's impossible to have dash in argument names you will have to use camelCase to emulate a dash in module, file or folder name.
 
 ```javascript
-require('nodular')(require)(function(
+require('nodular')(require, function(
   error
 , $express
 , $expressResource
