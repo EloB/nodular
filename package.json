@@ -1,6 +1,6 @@
 {
   "name": "nodular",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A dependency injection autoloader inspired by Angular.",
   "main": "index.js",
   "scripts": {
