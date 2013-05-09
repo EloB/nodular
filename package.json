@@ -1,0 +1,21 @@
+{
+  "name": "nodular",
+  "version": "0.0.0",
+  "description": "A dependency injection autoloader inspired by Angular.",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/EloB/nodular.git"
+  },
+  "author": "Olle \"EloB\" Bröms",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "gitHead": "d5346d721dd3ff0e16866f321a5857cea93fa5aa",
+  "devDependencies": {
+    "mocha": "~1.9.0",
+    "should": "~1.2.2"
+  }
+}
