@@ -74,7 +74,7 @@ require('nodular')(require, function(
 	// if(err) throw err;
 	
 	// If you declared a variable name that represent a folder and it doesn't contain a index file then an object is created with getters for each file.
-	// The files wont be required before you used them. If you want all files to be properly required then use the __preloadAll() method.
+	// The files wont be required before you used them. If you want all files to be properly required then use the __requireAll() method.
 	monkeyPatches.__requireAll()
 	
 	// You can also require a single file as well by just typing its name like this.
