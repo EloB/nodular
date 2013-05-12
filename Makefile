@@ -8,7 +8,8 @@ test:
 
 test-watch:
 	@NODE_ENV=test ./node_modules/.bin/mocha \
-		--watch
+		--watch \
+		--growl \
 		--reporter $(REPORTER) \
 		$(MOCHA_OPTS)
 

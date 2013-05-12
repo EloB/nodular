@@ -10,6 +10,108 @@ Installation
 $ npm install nodular
 ```
 
+Why i made it?
+------
+
+I often have troubles of structuring my projects with seperated files and folders. I also do not like to start all my files with a bunch of requires. Therefore I created nodular that will help you to easily create file structure to any project regardless of framework or modules.
+
+Here you can see an example of a standard "bootstrap" file from a normal size express.js website.
+
+```javascript
+// Module dependencies.
+var express = require('express');
+var expressResource = require('express-resource');
+var http = require('http');
+var redis = require('redis');
+var mongoose = require('mongoose');
+var connectAssets = require('connect-assets');
+var consolidate = require('consolidate');
+var resources = {
+	user: require('./resources/user'),
+	forum: require('./resources/forum'),
+	threads: require('./resources/threads'),
+	posts: require('./resources/posts'),
+	comments: require('./resources/comments'),
+	ads: require('./resources/ads'),
+	news: require('./resources/news'),
+	pages: require('./resources/pages')
+};
+var middlewares = {
+	session: require('./middlewares/session'),
+	passport: require('./middlewares/passport')
+};
+var routes = require('./routes');
+var config = {
+	mongodb: require('./config/mongodb'),
+	redis: require('./config/redis'),
+	passport: require('./config/passport'),
+	general: require('./config/general')
+};
+require('./monkey-patches/something');
+require('./monkey-patches/something-else');
+require('./mokney-patches/some-more');
+```
+
+With nodular the `javascript` will look like this.
+
+```javascript
+require('nodular')(require, function(
+  err
+, $express,
+, $expressResources
+, $http
+, $redis
+, $mongoose
+, $connectAssets
+, $consolidate
+, resources
+, middlewares
+, config
+, routes
+, monkeyPatches
+) {
+	// You can handle any require errors with the first variable.
+	// if(err) throw err;
+	
+	// If you declared a variable name that represent a folder and it doesn't contain a index file then an object is created with getters for each file.
+	// The files wont be required before you used them. If you want all files to be properly required then use the __preloadAll() method.
+	monkeyPatches.__requireAll()
+	
+	// You can also require a single file as well by just typing its name like this.
+	// monkeyPatches.something;
+	// monkeyPatches.someMore;
+	
+	// You can also easily use the custom require method to include files or folders other than the current working directory.
+	// var subPathToFolderOrFile = this.require('./sub-path/to/folder-or-file');
+	// var parentPathFolderOrFile = this.require('../parent/path/folder-or-file');
+	
+	// Your code here
+});
+```
+
+and in `coffescript` it will looks like this.
+
+```coffeescript
+require('nodular') require, (
+	err
+	$express
+	$expressResource
+	$http
+	$redis
+	$mongoose
+	$connectAssets
+	$consolidate
+	resources
+	middlewares
+	config
+	routes
+	monkeyPatches
+) ->
+	do monkeyPatches.__requireAll()
+	
+	# Your code here
+```
+
 Quick Start
 ------
 
@@ -20,72 +122,6 @@ When you enter an argument, then nodular automatically require that file or fold
 If you are in the beginning of an argument name states `$`, it will then be loaded from that projects `node_modules` folder.
 
 Because it's impossible to have dash in argument names you will have to use camelCase to emulate a dash in module, file or folder name.
-
-*Javascript example:*
-```javascript
-require('nodular')(require, function(
-  error
-, $express
-, $expressResource
-, config
-, middlewares
-) {
-    var app = module.exports = $express();
-    
-    console.log(config.redis); // Will output redis json object
-    
-    app.use($express.static('public'));
-    app.use(middlewares.passport());
-    app.use(middlewares.rest());
-});
-```
-
-*Coffeescript example:*
-```coffeescript
-require('nodular') require, (
-  error
-  $express
-  $expressResource
-  config
-  middlewares
-) ->
-  app = module.exports = $express()
-  
-  console.log config.redis # Will output redis json object
-  
-  app.use $express.static 'public'
-  app.use middlewares.passport()
-  app.use middlewares.rest()
-```
-
-A simple project and example
-------
-
-- **project_folder/**
-    - **config/**
-        - redis.json
-        - mongo.json
-    - **middlewares/**
-        - **rest/**
-            - **resources/**
-                - users.js
-                - threads.js
-                - posts.js
-                - comments.js
-            - index.js
-        - passport.js
-    - **node_modules/**
-        - **express/**
-            - (All files)
-        - **express-resources/**
-            - *(All files)*
-        - **passport/**
-            - *(All files)*
-        - **passport-local/**
-            - *(All files)*
-    - app.js
-
-TODO: Write more on example.
 
 Social
 ------
