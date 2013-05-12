@@ -107,7 +107,7 @@ require('nodular') require, (
 	routes
 	monkeyPatches
 ) ->
-	do monkeyPatches.__requireAll()
+	do monkeyPatches.__requireAll
 	
 	# Your code here
 ```
