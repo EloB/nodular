@@ -103,7 +103,23 @@ describe('nodular', function() {
 		
 		describe('.__requireAll', function() {
 			it('should pre require all modules in directory', function() {
-				
+				new Nodular(dirname, require, function(error, multiple) {
+					var key;
+					
+					for(key in multiple) {
+						if(multiple.hasOwnProperty(key)) {
+							should.exist(Object.getOwnPropertyDescriptor(multiple, key).get);
+						}
+					}
+					
+					multiple.__requireAll();
+					
+					for(key in multiple) {
+						if(multiple.hasOwnProperty(key)) {
+							should.not.exists(Object.getOwnPropertyDescriptor(multiple, key).get);
+						}
+					}
+				});
 			});
 		});
 	});
