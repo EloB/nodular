@@ -1,8 +1,7 @@
 var should = require('should')
   , path = require('path')
   , coffeeScript = require('coffee-script')
-  , nodular = require('../index')
-  , example = require('../examples/test');
+  , nodular = require('../index');
 
 describe('nodular', function() {
 	var noop = function() {};
