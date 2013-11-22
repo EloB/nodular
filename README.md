@@ -1,4 +1,4 @@
-nodular
+nodular [![Build Status](https://travis-ci.org/EloB/nodular.png?branch=master)](https://travis-ci.org/EloB/nodular) [![Dependency Status](https://gemnasium.com/EloB/nodular.png)](https://gemnasium.com/EloB/nodular)
 =======
 
 A dependency injection autoloader inspired by Angular.
