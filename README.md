@@ -57,7 +57,7 @@ With nodular the `javascript` will look like this.
 ```javascript
 require('nodular')(require, function(
   err
-, $express,
+, $express
 , $expressResources
 , $http
 , $redis
